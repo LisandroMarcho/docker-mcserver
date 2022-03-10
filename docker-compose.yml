@@ -1,12 +1,14 @@
+version: '3.8'
 services:
   paper:
     container_name: paper
     image: openjdk:17-oraclelinux8
     volumes:
-      - ./server-files:/app
+      - ./minecraft:/app
     ports:
       - 25565:25565
     working_dir: /app
-    entrypoint: ["java", "-Xms1G", "-Xmx2G", "-jar", "paper-215.jar", "--nogui"]
-    mem_limit: 2048m
-    # entrypoint: ["java", "--version"]
+    entrypoint: ["java", "-Xms1G", "-Xmx2G", "-jar", "server.jar", "--nogui"]
+    mem_limit: 1024m
+    stdin_open: true
+    tty: true
